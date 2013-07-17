@@ -1,2 +1,4 @@
-PathBundle
-==========
+DirectoryBundle
+===============
+
+DirectoryBundle

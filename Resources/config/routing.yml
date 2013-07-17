@@ -1,4 +1,4 @@
-innova_path_bundle:
-    resource: "@InnovaPathBundle/Controller/"
+innova_directory_bundle:
+    resource: "@InnovaDirectoryBundle/Controller/"
     type:     annotation
     prefix:   /
