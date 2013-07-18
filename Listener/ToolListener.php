@@ -4,6 +4,7 @@ namespace Innova\DirectoryBundle\Listener;
 
 use Claroline\CoreBundle\Event\Event\DisplayToolEvent;
 use Symfony\Component\DependencyInjection\ContainerAware;
+use Claroline\CoreBundle\Entity\User;
 
 class ToolListener extends ContainerAware
 {
@@ -23,15 +24,21 @@ class ToolListener extends ContainerAware
         $em = $this->container->get('doctrine.orm.entity_manager');
         $workspace = $em->getRepository('ClarolineCoreBundle:Workspace\AbstractWorkspace')->find($id);
 
+        $userManager = $this->container->get('claroline.manager.user_manager');
+        $users = $userManager->getUsersByWorkspace($workspace);
+
         return $this->container->get('templating')->render(
-            'InnovaDirectoryBundle::workspaceTool.html.twig', array('workspace' => $workspace)
+            'InnovaDirectoryBundle::directory.html.twig', array('users' => $users)
         );
     }
 
     private function desktop()
     {
+        $userManager = $this->container->get('claroline.manager.user_manager');
+        $users = $userManager->getAll();
+
         return $this->container->get('templating')->render(
-            'InnovaDirectoryBundle::desktopTool.html.twig'
+            'InnovaDirectoryBundle::directory.html.twig', array('users' => $users)
         );
     }
 }
