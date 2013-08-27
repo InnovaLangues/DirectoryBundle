@@ -59,7 +59,7 @@ class DirectoryController extends Controller
             $userManager->getUsersByWorkspace($workspace, $page) :
             $userManager->getUsersByWorkspaceAndName($workspace, $search, $page);
 
-        return array('pager' => $pager, 'search' => $search);
+        return array('workspace' => $workspace, 'pager' => $pager, 'search' => $search);
     }
 
 }

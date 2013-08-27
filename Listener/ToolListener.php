@@ -23,32 +23,5 @@ class ToolListener extends ContainerAware
         $subRequest = $this->container->get('request')->duplicate(array('page'=>1,'search'=>''), array(), array("_controller" => 'InnovaDirectoryBundle:Directory:fromDesktop'));
         $response = $this->container->get('http_kernel')->handle($subRequest, HttpKernelInterface::SUB_REQUEST); 
         $event->setContent($response->getContent());
-
     }
-
-    
-
-    // private function workspace($id)
-    // {
-    //     //if you want to keep the context, you must retrieve the workspace.
-    //     $em = $this->container->get('doctrine.orm.entity_manager');
-    //     $workspace = $em->getRepository('ClarolineCoreBundle:Workspace\AbstractWorkspace')->find($id);
-
-    //     $userManager = $this->container->get('claroline.manager.user_manager');
-    //     $users = $userManager->getUsersByWorkspace($workspace);
-
-    //     return $this->container->get('templating')->render(
-    //         'InnovaDirectoryBundle::directory.html.twig', array('users' => $users)
-    //     );
-    // }
-
-    // private function desktop()
-    // {
-    //     $userManager = $this->container->get('claroline.manager.user_manager');
-    //     $users = $userManager->getAll();
-
-    //     return $this->container->get('templating')->render(
-    //         'InnovaDirectoryBundle::directory.html.twig', array('users' => $users)
-    //     );
-    // }
 }
